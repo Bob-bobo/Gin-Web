@@ -3,10 +3,10 @@ package v1
 import (
 	"net/http"
 
-	"github.com/unknwon/com"
 	"github.com/astaxie/beego/validation"
 	"github.com/boombuler/barcode/qr"
 	"github.com/gin-gonic/gin"
+	"github.com/unknwon/com"
 
 	"github.com/EDDYCJY/go-gin-example/pkg/app"
 	"github.com/EDDYCJY/go-gin-example/pkg/e"
@@ -70,13 +70,13 @@ func GetArticles(c *gin.Context) {
 	state := -1
 	if arg := c.PostForm("state"); arg != "" {
 		state = com.StrTo(arg).MustInt()
-		valid.Range(state, 0, 1, "state")
+		valid.Range(state, 0, 1, "state").Message("标签Id只能是0或者1")
 	}
 
 	tagId := -1
 	if arg := c.PostForm("tag_id"); arg != "" {
 		tagId = com.StrTo(arg).MustInt()
-		valid.Min(tagId, 1, "tag_id")
+		valid.Min(tagId, 1, "tag_id").Message("标签ID必须大雨0")
 	}
 
 	if valid.HasErrors() {

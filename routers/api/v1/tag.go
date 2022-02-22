@@ -3,9 +3,9 @@ package v1
 import (
 	"net/http"
 
-	"github.com/unknwon/com"
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
+	"github.com/unknwon/com"
 
 	"github.com/EDDYCJY/go-gin-example/pkg/app"
 	"github.com/EDDYCJY/go-gin-example/pkg/e"
@@ -23,6 +23,9 @@ import (
 // @Success 200 {object} app.Response
 // @Failure 500 {object} app.Response
 // @Router /api/v1/tags [get]
+
+//获取多个文章标签
+
 func GetTags(c *gin.Context) {
 	appG := app.Gin{C: c}
 	name := c.Query("name")
@@ -37,6 +40,7 @@ func GetTags(c *gin.Context) {
 		PageNum:  util.GetPage(c),
 		PageSize: setting.AppSetting.PageSize,
 	}
+
 	tags, err := tagService.GetAll()
 	if err != nil {
 		appG.Response(http.StatusInternalServerError, e.ERROR_GET_TAGS_FAIL, nil)
@@ -48,7 +52,6 @@ func GetTags(c *gin.Context) {
 		appG.Response(http.StatusInternalServerError, e.ERROR_COUNT_TAG_FAIL, nil)
 		return
 	}
-
 	appG.Response(http.StatusOK, e.SUCCESS, map[string]interface{}{
 		"lists": tags,
 		"total": count,
