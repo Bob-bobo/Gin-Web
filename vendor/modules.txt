@@ -1,40 +1,15 @@
-# github.com/360EntSecGroup-Skylar/excelize v1.3.1-0.20180527032555-9e463b461434
-github.com/360EntSecGroup-Skylar/excelize
-# github.com/EDDYCJY/go-gin-example v0.0.0-20201228125222-28f372bf41f9
-github.com/EDDYCJY/go-gin-example/docs
-github.com/EDDYCJY/go-gin-example/middleware/jwt
-github.com/EDDYCJY/go-gin-example/models
-github.com/EDDYCJY/go-gin-example/pkg/app
-github.com/EDDYCJY/go-gin-example/pkg/e
-github.com/EDDYCJY/go-gin-example/pkg/export
-github.com/EDDYCJY/go-gin-example/pkg/file
-github.com/EDDYCJY/go-gin-example/pkg/gredis
-github.com/EDDYCJY/go-gin-example/pkg/logging
-github.com/EDDYCJY/go-gin-example/pkg/qrcode
-github.com/EDDYCJY/go-gin-example/pkg/setting
-github.com/EDDYCJY/go-gin-example/pkg/upload
-github.com/EDDYCJY/go-gin-example/pkg/util
-github.com/EDDYCJY/go-gin-example/routers
-github.com/EDDYCJY/go-gin-example/routers/api
-github.com/EDDYCJY/go-gin-example/routers/api/v1
-github.com/EDDYCJY/go-gin-example/service/article_service
-github.com/EDDYCJY/go-gin-example/service/auth_service
-github.com/EDDYCJY/go-gin-example/service/cache_service
-github.com/EDDYCJY/go-gin-example/service/tag_service
 # github.com/PuerkitoBio/purell v1.1.1-0.20180310210909-975f53781597
 github.com/PuerkitoBio/purell
 # github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578
 github.com/PuerkitoBio/urlesc
+# github.com/alecthomas/log4go v0.0.0-20180109082532-d146e6b86faa
+github.com/alecthomas/log4go
 # github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751
 github.com/alecthomas/template
 github.com/alecthomas/template/parse
 # github.com/astaxie/beego v1.12.3
 github.com/astaxie/beego/logs
 github.com/astaxie/beego/validation
-# github.com/boombuler/barcode v1.0.1-0.20180315051053-3c06908149f7
-github.com/boombuler/barcode
-github.com/boombuler/barcode/qr
-github.com/boombuler/barcode/utils
 # github.com/dgrijalva/jwt-go v3.1.0+incompatible
 github.com/dgrijalva/jwt-go
 # github.com/gin-contrib/sse v0.1.0
@@ -56,15 +31,8 @@ github.com/go-openapi/spec
 github.com/go-openapi/swag
 # github.com/go-sql-driver/mysql v1.5.0
 github.com/go-sql-driver/mysql
-# github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0
-github.com/golang/freetype
-github.com/golang/freetype/raster
-github.com/golang/freetype/truetype
 # github.com/golang/protobuf v1.4.2
 github.com/golang/protobuf/proto
-# github.com/gomodule/redigo v2.0.1-0.20180401191855-9352ab68be13+incompatible
-github.com/gomodule/redigo/internal
-github.com/gomodule/redigo/redis
 # github.com/jinzhu/gorm v0.0.0-20180213101209-6e1387b44c64
 github.com/jinzhu/gorm
 github.com/jinzhu/gorm/dialects/mysql
@@ -91,8 +59,6 @@ github.com/swaggo/gin-swagger
 github.com/swaggo/gin-swagger/swaggerFiles
 # github.com/swaggo/swag v1.5.1
 github.com/swaggo/swag
-# github.com/tealeg/xlsx v1.0.4-0.20180419195153-f36fa3be8893
-github.com/tealeg/xlsx
 # github.com/ugorji/go/codec v1.1.5-pre
 github.com/ugorji/go/codec
 # github.com/unknwon/com v1.0.1
@@ -100,9 +66,6 @@ github.com/unknwon/com
 # golang.org/x/crypto v0.0.0-20191011191535-87dc89f01550
 golang.org/x/crypto/bcrypt
 golang.org/x/crypto/blowfish
-# golang.org/x/image v0.0.0-20180628062038-cc896f830ced
-golang.org/x/image/font
-golang.org/x/image/math/fixed
 # golang.org/x/net v0.0.0-20190620200207-3b0461eec859
 golang.org/x/net/context
 golang.org/x/net/idna

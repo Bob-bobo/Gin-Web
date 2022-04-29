@@ -1,6 +1,8 @@
 package api
 
 import (
+	"github.com/EDDYCJY/go-gin-example/pkg/logging"
+	"log"
 	"net/http"
 
 	"github.com/astaxie/beego/validation"
@@ -35,6 +37,7 @@ func GetAuth(c *gin.Context) {
 	ok, _ := valid.Valid(&a)
 
 	if !ok {
+		log.Printf("[info] routers/api/auths-GetAuth %s", "INVALID_PARAMS")
 		app.MarkErrors(valid.Errors)
 		appG.Response(http.StatusBadRequest, e.INVALID_PARAMS, nil)
 		return
@@ -43,17 +46,22 @@ func GetAuth(c *gin.Context) {
 	authService := auth_service.Auth{Username: username, Password: password}
 	isExist, err := authService.Check()
 	if err != nil {
+		log.Printf("[info] routers/api/auths %s", err.Error())
+		logging.Warn(err)
 		appG.Response(http.StatusInternalServerError, e.ERROR_AUTH_CHECK_TOKEN_FAIL, nil)
 		return
 	}
 
 	if !isExist {
+		logging.Info("this check find it not exist")
 		appG.Response(http.StatusUnauthorized, e.ERROR_AUTH, nil)
 		return
 	}
 
 	token, err := util.GenerateToken(username, password)
 	if err != nil {
+		log.Printf("[info] routers/api/auths %s", err.Error())
+		logging.Warn(err)
 		appG.Response(http.StatusInternalServerError, e.ERROR_AUTH_TOKEN, nil)
 		return
 	}

@@ -1,6 +1,7 @@
 package jwt
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/dgrijalva/jwt-go"
@@ -16,8 +17,11 @@ func JWT() gin.HandlerFunc {
 		var code int
 		var data interface{}
 
+		fmt.Println("验证了一次token......")
 		code = e.SUCCESS
-		token := c.Query("token")
+		token := c.GetHeader("token")
+		fmt.Println(token)
+		//token := c.Query("token")
 		if token == "" {
 			code = e.INVALID_PARAMS
 		} else {

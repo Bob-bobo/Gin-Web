@@ -4,13 +4,14 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-// 加密密码
-func HashAndSalt(pwd []byte) string {
-	hash, err := bcrypt.GenerateFromPassword(pwd, bcrypt.MinCost)
+// Gneration the salt sercert
+func HashAndSalt(pwd string) string {
+	passwordByte := []byte(pwd)
+	hashedPassword, err := bcrypt.GenerateFromPassword(passwordByte, bcrypt.DefaultCost)
 	if err != nil {
-
+		return ""
 	}
-	return string(hash)
+	return string(hashedPassword)
 }
 
 // 验证密码

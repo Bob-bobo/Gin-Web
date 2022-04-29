@@ -2,17 +2,12 @@ package routers
 
 import (
 	"github.com/EDDYCJY/go-gin-example/middleware/jwt"
-	"net/http"
-
 	"github.com/gin-gonic/gin"
 
 	_ "github.com/EDDYCJY/go-gin-example/docs"
 	"github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 
-	"github.com/EDDYCJY/go-gin-example/pkg/export"
-	"github.com/EDDYCJY/go-gin-example/pkg/qrcode"
-	"github.com/EDDYCJY/go-gin-example/pkg/upload"
 	"github.com/EDDYCJY/go-gin-example/routers/api"
 	"github.com/EDDYCJY/go-gin-example/routers/api/v1"
 )
@@ -23,42 +18,55 @@ func InitRouter() *gin.Engine {
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 
-	r.StaticFS("/export", http.Dir(export.GetExcelFullPath()))
-	r.StaticFS("/upload/images", http.Dir(upload.GetImageFullPath()))
-	r.StaticFS("/qrcode", http.Dir(qrcode.GetQrCodeFullPath()))
+	//针对非登陆用户
+	//查看所有活动
+	r.GET("/activities", api.GetActivities)
+	//搜索活动
+	r.POST("/query", api.QueryAct)
+	//活动详情页
+	r.GET("/actInfo", api.GetActInfo)
+	//查看所有界面
+	r.GET("/findAll", api.GetAllCalligraphy)
 
+	//登陆操作
 	r.POST("/auth", api.GetAuth)
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	r.POST("/upload", api.UploadImage)
 
 	apiv1 := r.Group("/api/v1")
 	apiv1.Use(jwt.JWT())
 	{
-		//获取标签列表
-		apiv1.GET("/tags", v1.GetTags)
-		//新建标签
-		apiv1.POST("/tags", v1.AddTag)
-		//更新指定标签
-		apiv1.PUT("/tags/:id", v1.EditTag)
-		//删除指定标签
-		apiv1.DELETE("/tags/:id", v1.DeleteTag)
-		//导出标签
-		r.POST("/tags/export", v1.ExportTag)
-		//导入标签
-		r.POST("/tags/import", v1.ImportTag)
 
-		//获取文章列表
-		apiv1.GET("/articles", v1.GetArticles)
-		//获取指定文章
-		apiv1.GET("/articles/:id", v1.GetArticle)
-		//新建文章
-		apiv1.POST("/articles", v1.AddArticle)
-		//更新指定文章
-		apiv1.PUT("/articles/:id", v1.EditArticle)
-		//删除指定文章
-		apiv1.DELETE("/articles/:id", v1.DeleteArticle)
-		//生成文章海报
-		apiv1.POST("/articles/poster/generate", v1.GenerateArticlePoster)
+		//针对管理员
+		//查看活动
+		apiv1.GET("/activity", v1.GetActivity)
+		//添加活动
+		apiv1.POST("/activity", v1.AddActivity)
+		//编辑活动
+		apiv1.PUT("/activity", v1.EditActivity)
+		//删除活动
+		apiv1.DELETE("/activity", v1.DeleteActivity)
+		//查看分类
+		apiv1.GET("/category", v1.GetCategories)
+		//添加分类
+		apiv1.POST("/category", v1.AddCategory)
+		//编辑分类
+		apiv1.PUT("/category", v1.EditCategory)
+		//删除分类
+		apiv1.DELETE("/category", v1.DeleteCategory)
+		//查询所有用户信息
+		apiv1.GET("/alluser", v1.FindAllUser)
+
+		//针对登陆用户
+		//在活动详情页发表评论
+		apiv1.POST("/comment", v1.AddComment)
+		//参加活动
+		apiv1.POST("/joinAct", v1.JoinActivity)
+		//退出活动
+		apiv1.POST("/exitAct", v1.ExitActivity)
+		//查看参加的活动
+		apiv1.GET("/findAct", v1.FindJoinAct)
+		//查看个人信息
+		apiv1.GET("/selfInfo", v1.GetUserInfo)
 	}
 
 	return r

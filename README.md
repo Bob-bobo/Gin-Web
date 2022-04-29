@@ -1,28 +1,25 @@
-# Go Gin Example [![rcard](https://goreportcard.com/badge/github.com/EDDYCJY/go-gin-example)](https://goreportcard.com/report/github.com/EDDYCJY/go-gin-example) [![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://godoc.org/github.com/EDDYCJY/go-gin-example) [![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/EDDYCJY/go-gin-example/master/LICENSE)
+# Go Gin My_web [![rcard](https://goreportcard.com/badge/github.com/EDDYCJY/go-gin-example)](https://goreportcard.com/report/github.com/EDDYCJY/go-gin-example) [![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://godoc.org/github.com/EDDYCJY/go-gin-example) [![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/EDDYCJY/go-gin-example/master/LICENSE)
+                                                                 -zhengbo du
 
-An example of gin contains many useful features
-
-[简体中文](https://github.com/EDDYCJY/go-gin-example/blob/master/README_ZH.md)
-
-## Installation
+## 安装
 ```
 $ go get github.com/EDDYCJY/go-gin-example
 ```
 
-## How to run
+## 运行
 
-### Required
+### 要求
 
 - Mysql
 - Redis
 
-### Ready
+### 准备
 
-Create a **blog database** and import [SQL](https://github.com/EDDYCJY/go-gin-example/blob/master/docs/sql/blog.sql)
+创建数据库，并将文件夹docs中的mysql文件编译进去
 
-### Conf
+### 配置
 
-You should modify `conf/app.ini`
+修改该文件 `conf/app.ini`
 
 ```
 [database]
@@ -42,7 +39,7 @@ IdleTimeout = 200
 ...
 ```
 
-### Run
+### R运行
 ```
 $ cd $GOPATH/src/go-gin-example
 

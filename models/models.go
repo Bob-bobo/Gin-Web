@@ -41,8 +41,8 @@ func Setup() {
 	db.Callback().Create().Replace("gorm:update_time_stamp", updateTimeStampForCreateCallback)
 	db.Callback().Update().Replace("gorm:update_time_stamp", updateTimeStampForUpdateCallback)
 	db.Callback().Delete().Replace("gorm:delete", deleteCallback)
-	db.DB().SetMaxIdleConns(10)
-	db.DB().SetMaxOpenConns(100)
+	db.DB().SetMaxIdleConns(1000)
+	db.DB().SetMaxOpenConns(1000)
 }
 
 // CloseDB closes database connection (unnecessary)
